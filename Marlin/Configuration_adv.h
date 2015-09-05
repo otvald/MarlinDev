@@ -55,6 +55,23 @@
  * Also, if the temperature is set to a value below mintemp, it will not be changed by autotemp.
  * On an Ultimaker, some initial testing worked with M109 S215 B260 F1 in the start.gcode
  */
+#ifdef PIDTEMP
+  // this adds an experimental additional term to the heating power, proportional to the extrusion speed.
+  // if Kc is chosen well, the additional required power due to increased melting should be compensated.
+  #define PID_ADD_EXTRUSION_RATE
+  #ifdef PID_ADD_EXTRUSION_RATE
+    #define  DEFAULT_Kc (1) //heating power=Kc*(e_speed)
+  #endif
+#endif
+
+
+//automatic temperature: The hot end target temperature is calculated by all the buffered lines of gcode.
+//The maximum buffered steps/sec of the extruder motor are called "se".
+//You enter the autotemp mode by a M109 S<mintemp> B<maxtemp> F<factor>
+// the target temperature is set to mintemp+factor*se[steps/sec] and limited by mintemp and maxtemp
+// you exit the value by any M109 without F*
+// Also, if the temperature is set to a value <mintemp, it is not changed by autotemp.
+// on an Ultimaker, some initial testing worked with M109 S215 B260 F1 in the start.gcode
 #define AUTOTEMP
 #if ENABLED(AUTOTEMP)
   #define AUTOTEMP_OLDWEIGHT 0.98
@@ -213,8 +230,8 @@
 //homing hits the endstop, then retracts by this distance, before it tries to slowly bump again:
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
-#define Z_HOME_BUMP_MM 2
-#define HOMING_BUMP_DIVISOR {2, 2, 4}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define Z_HOME_BUMP_MM 5 // deltas need the same for all three axis
+#define HOMING_BUMP_DIVISOR {10, 10, 20}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
 // When G28 is called, this option will make Y home before X
