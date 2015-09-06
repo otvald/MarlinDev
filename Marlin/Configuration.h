@@ -681,7 +681,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   // Setting the wrong pin may have unexpected and potentially disastrous outcomes.
   // Use with caution and do your homework.
   //
-  //#define Z_MIN_PROBE_ENDSTOP
+  #define Z_MIN_PROBE_ENDSTOP
 
 #endif // AUTO_BED_LEVELING_FEATURE
 
