@@ -366,8 +366,8 @@ Here are some standard links for getting your machine calibrated:
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-const bool X_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
-const bool Y_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
+const bool X_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+const bool Y_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 const bool Z_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool X_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool Y_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
@@ -480,7 +480,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 
 #define AUTO_BED_LEVELING_FEATURE // Delete the comment to enable (remove // at the start of the line)
 #define DEBUG_LEVELING_FEATURE
-// #define Z_MIN_PROBE_REPEATABILITY_TEST  // If not commented out, Z-Probe Repeatability test will be included if Auto Bed Leveling is Enabled.
+//#define Z_MIN_PROBE_REPEATABILITY_TEST  // If not commented out, Z-Probe Repeatability test will be included if Auto Bed Leveling is Enabled.
 
 #if ENABLED(AUTO_BED_LEVELING_FEATURE)
 
@@ -533,7 +533,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   // X and Y offsets must be integers.
   #define X_PROBE_OFFSET_FROM_EXTRUDER 0     // Probe on: -left  +right
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0.0   // Probe on: -front +behind
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.3  // -below (always!)
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.5  // -below (always!)
 
   #define Z_RAISE_BEFORE_HOMING 15      // (in mm) Raise Z axis before homing (G28) for Z probe clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case.
@@ -681,7 +681,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
   // Setting the wrong pin may have unexpected and potentially disastrous outcomes.
   // Use with caution and do your homework.
   //
-  #define Z_MIN_PROBE_ENDSTOP
+  // #define Z_MIN_PROBE_ENDSTOP
 
 #endif // AUTO_BED_LEVELING_FEATURE
 
